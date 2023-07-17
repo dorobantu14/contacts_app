@@ -3,11 +3,14 @@ import 'package:flutter/material.dart';
 class AppButton extends StatelessWidget {
   final VoidCallback? onPressed;
   final Widget text;
+  final bool isRounded;
+  final MaterialStateProperty<Color?>? color;
 
   const AppButton({
     Key? key,
     this.onPressed,
     required this.text,
+    required this.isRounded, this.color,
   }) : super(key: key);
 
   @override
@@ -17,8 +20,12 @@ class AppButton extends StatelessWidget {
       height: 52,
       child: ElevatedButton(
         style: ButtonStyle(
-          backgroundColor: MaterialStateProperty.all<Color>(
-                  Colors.lightBlueAccent.withOpacity(0.4)),
+          shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+            RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(isRounded ? 10.0 : 0),
+            ),
+          ),
+          backgroundColor: color,
         ),
         onPressed: onPressed,
         child: text,
