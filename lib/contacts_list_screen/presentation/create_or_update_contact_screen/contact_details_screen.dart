@@ -86,6 +86,7 @@ class _ContactDetailsScreenState extends State<ContactDetailsScreen> {
                   getNameField(),
                   getMobileNumberField(state),
                   getLandlineField(state),
+                  getDeleteButton(),
                   const Spacer(),
                   getSaveButton(context, state)
                 ],
@@ -103,7 +104,6 @@ class _ContactDetailsScreenState extends State<ContactDetailsScreen> {
           style: TextStyles.subtitleStyle,
         ),
         actions: [
-          getDeleteButton(),
           getAddToFavoriteButton(),
         ],
       );
@@ -114,8 +114,15 @@ class _ContactDetailsScreenState extends State<ContactDetailsScreen> {
       child: GestureDetector(
         onTap: deleteContact,
         child: const Padding(
-          padding: EdgeInsets.only(right: 16),
-          child: Icon(Icons.delete, size: 28),
+          padding: EdgeInsets.only(top: 16),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Icon(Icons.delete, size: 28),
+              SizedBox(width: 8),
+              Text('Delete contact'),
+            ],
+          ),
         ),
       ),
     );
@@ -209,14 +216,11 @@ class _ContactDetailsScreenState extends State<ContactDetailsScreen> {
   Widget getAddToFavoriteButton() {
     return Padding(
       padding: const EdgeInsets.only(right: 16),
-      child: Visibility(
-        visible: widget.contactName == null,
-        child: GestureDetector(
-          onTap: addToFavorites,
-          child: Icon(
-            isContactFavorite ? Icons.star : Icons.star_outline,
-            size: 32,
-          ),
+      child: GestureDetector(
+        onTap: addToFavorites,
+        child: Icon(
+          isContactFavorite ? Icons.star : Icons.star_outline,
+          size: 32,
         ),
       ),
     );
