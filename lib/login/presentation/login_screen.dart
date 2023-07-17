@@ -1,4 +1,5 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:contacts_app/app/app_router.dart';
 import 'package:contacts_app/core/text_styles/text_styles.dart';
 import 'package:contacts_app/core/widgets/app_button.dart';
 import 'package:contacts_app/core/widgets/input_form.dart';
@@ -103,7 +104,10 @@ class _LoginScreenState extends State<LoginScreen> {
       return Padding(
         padding: const EdgeInsets.symmetric(horizontal: 24),
         child: AppButton(
+          isRounded: true,
           text: const Text('Login'),
+          color: MaterialStateProperty.all<Color>(
+              Colors.lightBlueAccent.withOpacity(0.4)),
           onPressed: onLoginButtonPressed,
         ),
       );
@@ -155,7 +159,11 @@ class _LoginScreenState extends State<LoginScreen> {
 
     return Scaffold(
       body: BlocListener<LoginBloc, LoginState>(
-        listener: (context, state) {},
+        listener: (context, state) {
+          if (state.status.name == LoginStatus.success.name) {
+            context.router.push(const ContactsRoute());
+          }
+        },
         child: SingleChildScrollView(
           child: Container(
             height: MediaQuery.of(context).size.height,

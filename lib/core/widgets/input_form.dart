@@ -1,21 +1,22 @@
 import 'package:flutter/material.dart';
 
 class InputForm extends StatelessWidget {
-  final String labelText;
+  final String? labelText;
   final TextEditingController controller;
   final bool? obscureText;
   final Widget? suffixIcon;
   final ValueChanged? onChanged;
   final String? errorText;
+  final String? initialValue;
 
   const InputForm({
     Key? key,
-    required this.labelText,
+    this.labelText,
     required this.controller,
     this.obscureText,
     this.suffixIcon,
     this.onChanged,
-    this.errorText,
+    this.errorText, this.initialValue,
   }) : super(key: key);
 
   @override
