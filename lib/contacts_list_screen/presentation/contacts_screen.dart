@@ -1,12 +1,12 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:contacts_app/contacts_list_screen/presentation/bloc/contacts_bloc.dart';
 import 'package:contacts_app/contacts_list_screen/presentation/contacts_list_screen.dart';
-import 'package:contacts_app/contacts_list_screen/presentation/create_contact_screen/contact_details_screen.dart';
 import 'package:contacts_app/contacts_list_screen/repository/contacts_repository.dart';
 import 'package:contacts_app/core/text_styles/text_styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import 'create_or_update_contact_screen/contact_details_screen.dart';
 import 'favorite_contacts_screen.dart';
 
 class ContactsScreen extends StatefulWidget with AutoRouteWrapper {
